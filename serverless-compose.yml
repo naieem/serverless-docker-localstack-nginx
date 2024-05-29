@@ -1,0 +1,9 @@
+services:
+  test:
+    path: test
+
+  infra:
+    path: infra
+
+  lambda:
+    path: localstack-lambda

@@ -1,0 +1,14 @@
+{
+  "name": "localstack-lambda",
+  "version": "1.0.0",
+  "description": "",
+  "main": "handler.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "naieem",
+  "license": "ISC",
+  "devDependencies": {
+    "serverless-localstack": "^1.2.0"
+  }
+}
