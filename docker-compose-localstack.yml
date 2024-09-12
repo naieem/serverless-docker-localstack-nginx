@@ -1,14 +1,13 @@
-version: "3.8"
-
 services:
   localstack:
     container_name: "localaws"
-    image: localstack/localstack
+    image: localstack/localstack-pro
     ports:
       - "127.0.0.1:4566:4566" # LocalStack Gateway
       - "127.0.0.1:4510-4559:4510-4559" # external services port range
     environment:
       # LocalStack configuration: https://docs.localstack.cloud/references/configuration/
+      - LOCALSTACK_AUTH_TOKEN=ls-quXatEGa-2462-Hate-3512-SAtEqitUea51
       - DEBUG=${DEBUG:-0}
     volumes:
       - "${LOCALSTACK_VOLUME_DIR:-./volume}:/var/lib/localstack"
@@ -16,15 +15,21 @@ services:
     networks:
       - net-localstack
 
-  server:
-    build:
-      context: .
-      dockerfile: nginx.Dockerfile
-    container_name: ngnix_server
-    ports:
-      - "9090:8080"
-    networks:
-      - net-localstack
+  # mail:
+  #   container_name: "mail"
+  #   image: bytemark/smtp
+  #   networks:
+  #     - net-localstack
+  #   restart: always
+  # server:
+  #   build:
+  #     context: .
+  #     dockerfile: nginx.Dockerfile
+  #   container_name: ngnix_server
+  #   ports:
+  #     - "9000:8080"
+  #   networks:
+  #     - net-localstack
 
 networks:
   net-localstack:
